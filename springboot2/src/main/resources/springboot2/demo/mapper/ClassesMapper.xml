@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 全类名 id为方法名、resultType为返回类型 -->
+<mapper namespace="springboot2.demo.mapper.ClassesMapper">
+    <resultMap id="c" type="Classes">
+        <id property="id" column="id"></id>
+        <collection property="students" column="id" ofType="Student" select="springboot2.demo.mapper.StudentMapper.getStudentByClass" ></collection>
+    </resultMap>
+    <select id="get" resultMap="c">
+        select * from grades where id = #{id}
+    </select>
+
+</mapper>
